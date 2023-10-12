@@ -20,9 +20,7 @@ int main()
 	if (sum < 10)
 	{
 		cout << "loser\n";
+		return 0;
 	}
-	else
-	{
-		cout << "Good\n";
-	}
+	cout << "Good\n";
 }
