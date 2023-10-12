@@ -1,32 +1,28 @@
 #include <iostream>
-#include <vector>
-#include <map>
+#include <time.h>
+#include <cmath>
 using namespace std;
-
-// Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
-// 1 <= nums.length <= 5 * 104
-//-10^9 <= nums[i] <= 10^9
-
-vector<int> majorityElement(vector<int> &nums)
-{
-	map<int, int> a;
-	for (auto i : nums)
-	{
-		a[i]++;
-	}
-	vector<int> ans;
-	for (auto i : a)
-	{
-		if (i.second > (nums.size() / 3))
-		{
-			ans.push_back(i.first);
-		}
-	}
-	return ans;
-}
 
 int main()
 {
-	vector<int> arr{3, 2, 3, 1, 1, 1};
-	majorityElement(arr);
+	int cntShot = 5;
+	int sum = 0;
+	srand(time(0));
+	while (cntShot > 0)
+	{
+		int x, y;
+		cin >> x >> y;
+		pair<int, int> i = {x + rand() % 11 - 5, y + rand() % 11 - 5};
+		int r = pow(i.first, 2) + pow(i.second, 2);
+		sum += (((int)(5 - sqrt(r)) >> 31) & 1) == 0 ? 5 - sqrt(r) : 0;
+		cntShot--;
+	}
+	if (sum < 10)
+	{
+		cout << "loser\n";
+	}
+	else
+	{
+		cout << "Good\n";
+	}
 }
